@@ -36,7 +36,7 @@ final class AppleApiClient implements AppleApiClientInterface
 
         try {
             return $this->responseFactory->createFromArray(
-                Utils::jsonDecode($response->getBody()->getContents(), true)
+                GuzzleHttp\json_decode($response->getBody()->getContents(), true)
             );
         } catch (InvalidArgumentException $exception) {
             throw new Exception\InvalidResponseException(
